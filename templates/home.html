@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <title>Microblog | styles</title>
+</head>
+<body>
+    <header class="navbar">
+        <div class="navbar-branding">
+            <img class="branding-logo" src="/static/logo.svg" alt="website branding"> <b>Microblog</b> 
+        </div>
+        <ul class="navigation">
+            <li><a class="navigation-link" href="#">Recent</a></li>
+            <li><a class="navigation-link" href="#">Calander</a></li>
+        </ul>
+    </header>
+    <main class="main">
+        <section>
+            <h1 class="section-headers">Write your entry here!</h1>
+            <form class="form" method="POST" action="/">
+                <div class="form__input">
+                    <label class="form__label" for="entry">Your Entry:</label>
+                    <textarea class="form__textarea" name="content" id="entry" cols="30" rows="10"></textarea>
+                </div>
+                <button class="form__submit" type="submit">SUBMIT</button>
+            </form>
+        </section>
+        <section class="entries" >
+            <h1 class="entries__header">Recent entries.</h1>
+            {% for entry in entries %}
+                <article class="entries__content__first">
+                    <div>
+                        <h2 class="entries__title"> {{entry[0] | truncate(20, True)}} </h2>
+                        <time class="entries__date" datetime="06-01-2022">| {{ entry[2] }} </time>
+                    </div>
+                    <p class="entries__entry"> {{ entry[0] }} </p>
+                </article>
+            {% endfor %}
+        </section>
+    </main>
+    <footer>
+        <div class="footer__container">
+            <p class="footer__branding">Piyush Kumar | styles</p>
+        </div>
+    </footer>
+</body>
+</html>
